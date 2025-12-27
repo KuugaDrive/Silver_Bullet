@@ -7,26 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* --- COPY CSS DARI VERSI SEBELUMNYA --- */
         :root {
             --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --accent-color: #FFD700; /* Emas */
+            --accent-color: #FFD700;
             --text-main: #ffffff;
             --text-secondary: #b0b0b0;
             --sidebar-bg: rgba(0, 0, 0, 0.3);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg-gradient);
-            background-attachment: fixed; /* Agar background tetap saat scroll */
+            background-attachment: fixed;
             color: var(--text-main);
             display: flex;
             justify-content: center;
@@ -48,7 +45,7 @@
             overflow: hidden;
         }
 
-        /* --- SIDEBAR (KIRI) --- */
+        /* SIDEBAR STYLES */
         .sidebar {
             background: var(--sidebar-bg);
             padding: 40px 30px;
@@ -57,260 +54,58 @@
             align-items: center;
             border-right: 1px solid var(--glass-border);
         }
-
-        .profile-wrapper {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
+        .profile-wrapper { position: relative; margin-bottom: 25px; }
         .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid var(--accent-color);
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            transition: transform 0.4s ease;
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 4px solid var(--accent-color); object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); transition: transform 0.4s ease;
         }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
+        .sidebar h1 { font-size: 26px; font-weight: 700; color: var(--text-main); text-align: center; margin-bottom: 5px; }
+        .sidebar .role { font-size: 14px; color: var(--accent-color); margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center; }
+        .contact-info { width: 100%; margin-bottom: 40px; }
+        .contact-item { display: flex; align-items: center; margin-bottom: 18px; font-size: 13px; color: var(--text-secondary); transition: color 0.3s; }
+        .contact-item:hover { color: var(--text-main); }
+        .contact-item i { color: var(--accent-color); width: 30px; font-size: 16px; display: flex; justify-content: center; }
+        
+        /* SKILLS STYLES */
+        .skills-section { width: 100%; }
+        .section-header-small { font-size: 16px; color: var(--text-main); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); text-transform: uppercase; letter-spacing: 1px; }
+        .skill-box { margin-bottom: 15px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .skill-name { font-size: 13px; font-weight: 500; }
+        .progress-bg { background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-color), #ffec8b); border-radius: 10px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
 
-        .profile-img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
+        /* MAIN CONTENT STYLES */
+        .main-content { padding: 50px; background: transparent; }
+        .section { margin-bottom: 45px; }
+        .section-title { font-size: 22px; color: var(--accent-color); margin-bottom: 25px; display: flex; align-items: center; font-weight: 700; }
+        .section-title i { margin-right: 15px; background: rgba(255, 215, 0, 0.1); padding: 10px; border-radius: 8px; font-size: 18px; }
 
-        .sidebar h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--text-main);
-            text-align: center;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
+        /* TIMELINE STYLES */
+        .timeline-item { position: relative; padding-left: 30px; margin-bottom: 30px; border-left: 2px solid rgba(255, 255, 255, 0.1); }
+        .timeline-item::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 10px var(--accent-color); }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; flex-wrap: wrap; }
+        .item-title { font-size: 18px; font-weight: 600; color: var(--text-main); }
+        .item-date { font-size: 12px; background: rgba(255, 215, 0, 0.1); color: var(--accent-color); padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+        .item-subtitle { font-size: 14px; color: var(--text-secondary); font-style: italic; display: block; margin-bottom: 8px; }
+        .item-desc { font-size: 14px; color: #d1d1d1; line-height: 1.6; }
 
-        .sidebar .role {
-            font-size: 14px;
-            color: var(--accent-color);
-            margin-bottom: 35px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            text-align: center;
-        }
+        /* PROJECT GRID STYLES */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .project-card { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s, background 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .project-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); border-color: var(--accent-color); }
+        .project-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+        .tech-stack { display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }
+        .tech-badge { font-size: 10px; background: rgba(0, 0, 0, 0.3); padding: 4px 8px; border-radius: 4px; color: var(--accent-color); border: 1px solid rgba(255, 215, 0, 0.2); }
 
-        .contact-info {
-            width: 100%;
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            transition: color 0.3s;
-        }
-
-        .contact-item:hover {
-            color: var(--text-main);
-        }
-
-        .contact-item i {
-            color: var(--accent-color);
-            width: 30px;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Skill Bars */
-        .skills-section {
-            width: 100%;
-        }
-
-        .section-header-small {
-            font-size: 16px;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--glass-border);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .skill-box {
-            margin-bottom: 15px;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .skill-name {
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .progress-bg {
-            background: rgba(255, 255, 255, 0.1);
-            height: 6px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-color), #ffec8b);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        /* --- MAIN CONTENT (KANAN) --- */
-        .main-content {
-            padding: 50px;
-            background: transparent;
-        }
-
-        .section {
-            margin-bottom: 45px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            color: var(--accent-color);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .section-title i {
-            margin-right: 15px;
-            background: rgba(255, 215, 0, 0.1);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 18px;
-        }
-
-        /* Timeline Style for Education & Experience */
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 30px;
-            border-left: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-color);
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 5px;
-            flex-wrap: wrap;
-        }
-
-        .item-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .item-date {
-            font-size: 12px;
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--accent-color);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .item-subtitle {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-style: italic;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .item-desc {
-            font-size: 14px;
-            color: #d1d1d1;
-            line-height: 1.6;
-        }
-
-        /* Project Cards */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-color);
-        }
-
-        .project-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
-
-        .tech-stack {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .tech-badge {
-            font-size: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: var(--accent-color);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 850px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid var(--glass-border);
-            }
-            .profile-img {
-                width: 140px;
-                height: 140px;
-            }
-            .main-content {
-                padding: 30px;
-            }
+            .container { grid-template-columns: 1fr; }
+            .sidebar { border-right: none; border-bottom: 1px solid var(--glass-border); }
+            .profile-img { width: 140px; height: 140px; }
+            .main-content { padding: 30px; }
         }
     </style>
 </head>
@@ -319,46 +114,31 @@
     <div class="container">
         <aside class="sidebar">
             <div class="profile-wrapper">
-                <img src="PP1.png" alt="Foto Syukranda" class="profile-img">
+                <img src="Mikasa Ackerman.jpg" alt="Foto Syukranda" class="profile-img">
             </div>
             
             <h1>Syukranda</h1>
             <p class="role">Mahasiswa Teknik Informatika</p>
             
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-id-card"></i> 2311500546
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i> Ciledug, Kota Tangerang
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i> 2311500546@student.budiluhur.ac.id
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-birthday-cake"></i> 30 September 2005
-                </div>
+                <div class="contact-item"><i class="fas fa-id-card"></i> 2311500546</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Ciledug, Kota Tangerang</div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> 2311500546@student.budiluhur.ac.id</div>
+                <div class="contact-item"><i class="fas fa-birthday-cake"></i> 30 September 2005</div>
             </div>
 
             <div class="skills-section">
                 <h3 class="section-header-small">Minat & Hobi</h3>
-                
                 <div class="skill-box">
-                    <div class="skill-info">
-                        <span class="skill-name">Musik (Piano/Gitar)</span>
-                    </div>
+                    <div class="skill-info"><span class="skill-name">Musik (Piano/Gitar)</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
                 </div>
                 <div class="skill-box">
-                    <div class="skill-info">
-                        <span class="skill-name">Seni (Menggambar)</span>
-                    </div>
+                    <div class="skill-info"><span class="skill-name">Seni (Menggambar)</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div>
                 </div>
                 <div class="skill-box">
-                    <div class="skill-info">
-                        <span class="skill-name">Bela Diri</span>
-                    </div>
+                    <div class="skill-info"><span class="skill-name">Bela Diri</span></div>
                     <div class="progress-bg"><div class="progress-fill" style="width: 85%"></div></div>
                 </div>
             </div>
@@ -369,13 +149,12 @@
             <div class="section">
                 <h2 class="section-title"><i class="fas fa-user-astronaut"></i>Tentang Saya</h2>
                 <p style="color: #d1d1d1; line-height: 1.8;">
-                    Mahasiswa Teknik Informatika Universitas Budi Luhur yang berdedikasi dengan ketertarikan mendalam pada pengembangan teknologi cerdas (IoT) dan analisis data. Memiliki latar belakang kedisiplinan tinggi yang terbentuk melalui pengalaman organisasi dan bela diri. Siap berkontribusi dan belajar dalam lingkungan profesional teknologi.
+                    Mahasiswa Teknik Informatika Universitas Budi Luhur yang aktif berkontribusi dalam kegiatan akademik dan pengabdian masyarakat. Memiliki ketertarikan pada Data Science, IoT, dan pengembangan web, serta berpengalaman sebagai instruktur teknis dan asisten dosen.
                 </p>
             </div>
 
             <div class="section">
                 <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Pendidikan</h2>
-                
                 <div class="timeline-item">
                     <div class="item-header">
                         <span class="item-title">Universitas Budi Luhur</span>
@@ -383,7 +162,6 @@
                     </div>
                     <span class="item-subtitle">S1 - Teknik Informatika</span>
                 </div>
-
                 <div class="timeline-item">
                     <div class="item-header">
                         <span class="item-title">SMAN 1 Takengon</span>
@@ -394,53 +172,75 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i>Pengalaman</h2>
-                
+                <h2 class="section-title"><i class="fas fa-briefcase"></i>Pengalaman Kerja & Organisasi</h2>
                 <div class="timeline-item">
                     <div class="item-header">
                         <span class="item-title">Asisten Laboratorium ICT</span>
                         <span class="item-date">Aktif - Sekarang</span>
                     </div>
                     <span class="item-subtitle">Universitas Budi Luhur</span>
-                    <p class="item-desc">
-                        Bertanggung jawab membimbing mahasiswa dalam sesi praktikum komputer, melakukan troubleshooting perangkat keras dan lunak di laboratorium, serta membantu dosen dalam persiapan materi ajar teknis.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <span class="item-title">Anggota UKM Taekwondo</span>
-                        <span class="item-date">2023 - 2024</span>
-                    </div>
-                    <span class="item-subtitle">Universitas Budi Luhur</span>
-                    <p class="item-desc">Aktif berpartisipasi dalam pelatihan intensif untuk melatih kedisiplinan fisik dan mental serta berkontribusi dalam kegiatan kejuaraan universitas.</p>
+                    <p class="item-desc">Membimbing praktikum, troubleshooting lab komputer, dan membantu persiapan materi teknis.</p>
                 </div>
             </div>
 
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-laptop-code"></i>Proyek Akademik</h2>
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i>Proyek & Aktivitas Akademik</h2>
                 <div class="project-grid">
                     
                     <div class="project-card">
-                        <div class="project-title">Smart Assist Glass</div>
+                        <div class="project-title">Instruktur PKM Data Science</div>
                         <p class="item-desc">
-                            Pengembangan prototipe kacamata pintar berbasis IoT yang dirancang untuk membantu mobilitas dan navigasi penyandang tunanetra.
+                            [2025] Asisten Dosen dalam program PKM "Peningkatan Literasi Analisis Data Science Dasar" bagi siswa SMK RPL menggunakan Python untuk penguatan kompetensi digital.
                         </p>
                         <div class="tech-stack">
-                            <span class="tech-badge">Internet of Things</span>
-                            <span class="tech-badge">Sensors</span>
-                            <span class="tech-badge">Arduino/ESP32</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Data Science</span>
+                            <span class="tech-badge">Teaching</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Website Sekolah Lansia</div>
+                        <p class="item-desc">
+                            [2025] Pengembangan platform Website Sekolah Lansia Pesanggrahan sebagai proyek Program Kreativitas Mahasiswa (PKM).
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Web Dev</span>
+                            <span class="tech-badge">Social Impact</span>
+                            <span class="tech-badge">CMS</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Pemateri WorthIT#12</div>
+                        <p class="item-desc">
+                            [2025] Menjadi narasumber workshop dengan materi "Algoritma Menggunakan Flowgorithm" untuk berbagi pengetahuan logika pemrograman.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Flowgorithm</span>
+                            <span class="tech-badge">Algoritma</span>
+                            <span class="tech-badge">Public Speaking</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Smart Assist Glass</div>
+                        <p class="item-desc">
+                            Prototipe kacamata pintar IoT untuk membantu navigasi penyandang tunanetra.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">IoT</span>
+                            <span class="tech-badge">ESP32</span>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-title">Analisis Sentimen Novel</div>
                         <p class="item-desc">
-                            Studi analisis sentimen mengenai nasionalisme dalam novel "Bumi Manusia" menggunakan algoritma klasifikasi Naïve Bayes.
+                            Analisis sentimen nasionalisme pada novel "Bumi Manusia" menggunakan Naïve Bayes.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Data Mining</span>
                             <span class="tech-badge">Naïve Bayes</span>
                         </div>
                     </div>
@@ -453,4 +253,3 @@
 
 </body>
 </html>
-
