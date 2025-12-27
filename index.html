@@ -3,136 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Curriculum Vitae - Syukranda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            background-image: url('RDR2.png'); 
-            background-size: cover;
-            background-position: center;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
+        :root {
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #16213e;
+            --accent-color: #FFD700; /* Emas */
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            padding-top: 50px; 
-            padding-bottom: 50px; 
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
         .container {
-            width: 80%;
-            margin: auto;
-            background-color: rgba(51, 0, 102, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            margin-top: 50px; /* Tambahkan margin untuk memberi jarak di atas */
-            margin-bottom: 50px; /* Tambahkan margin untuk memberi jarak di bawah */
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Rasio 1:2 untuk Sidebar:Konten */
+            width: 100%;
+            max-width: 1000px;
+            background-color: var(--secondary-bg);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
         }
-        .header {
+
+        /* --- SIDEBAR (KIRI) --- */
+        .sidebar {
+            background-color: #0f3460;
+            padding: 30px;
             text-align: center;
-            padding: 20px 0;
-            background-color: #8B4513;
-            color: white;
-            border-radius: 10px 10px 0 0;
+            border-right: 3px solid var(--accent-color);
         }
-        img {
-            border-radius: 10%;
-            border: 5px solid #8B4513;
-            max-width: 200px;
-            display: block;
-            margin: 20px auto;
-            transition: transform 0.3s ease;
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
         }
-        img:hover {
-            transform: scale(2.2);
-        }
-        h1, h3 {
-            color: #FFD700;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        li:hover {
-            background-color: rgba(255, 215, 0, 0.5);
+
+        .profile-img:hover {
             transform: scale(1.05);
         }
-        .section {
-            margin: 20px 0;
-            padding: 10px;
-            border-left: 5px solid #FFD700;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 5px;
         }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #ccc;
+
+        .sidebar .role {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .icon {
+
+        .contact-info {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            width: 25px;
             margin-right: 10px;
-            color: #FFD700;
+        }
+
+        /* Skill Bar Styles */
+        .skills-section {
+            text-align: left;
+        }
+
+        .skill-box {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .progress-bar {
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* --- MAIN CONTENT (KANAN) --- */
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--accent-color);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+        }
+
+        .item {
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-left: 3px solid var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .item-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .item-date {
+            font-size: 12px;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 3px solid var(--accent-color);
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="header">
-            <h1><img src="Detective Conan_ Conan Edogawa Print_.jpeg" alt="Logo" style="max-width: 100px;"> Curriculum Vitae</h1>
-        </div>
-        <div class="section">
-            <h2><i class="fas fa-user icon"></i>Data Pribadi</h2>
-            <ul>
-                <li><i class="fas fa-id-card icon"></i>Nama: Syukranda</li>
-                <li><i class="fas fa-graduation-cap icon"></i>NIM: 2311500546</li>
-                <li><i class="fas fa-venus-mars icon"></i>Jenis Kelamin: Laki-Laki</li>
-                <li><i class="fas fa-map-marker-alt icon"></i>Alamat: Gelelungi, Pegasing, Aceh Tengah</li>
-                <li><i class="fas fa-praying-hands icon"></i>Agama: Islam</li>
-                <li><i class="fas fa-heart icon"></i>Status: Jomblo Coeekk</li>
-                <li><i class="fas fa-birthday-cake icon"></i>Tempat, Tanggal Lahir: Gelelungi, 30-09-2005</li>
-                <li><i class="fas fa-flag icon"></i>Kewarganegaraan: WNI</li>
-            </ul>
-            <img src="Mikasa Ackerman.jpg" alt="Foto Syukranda">
-        </div>
-        <div class="section">
-            <h3><i class="fas fa-book icon"></i>Pendidikan Formal</h3>
-            <ul>
-                <li><i class="fas fa-school icon"></i>SMAN 1 Takengon</li>
-                <li><i class="fas fa-university icon"></i>Universitas Budi Luhur</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h3><i class="fas fa-briefcase icon"></i>Pengalaman Kerja</h3>
-            <ul>
-                <li><i class="fas fa-clipboard-list icon"></i>--------------------------------</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h3><i class="fas fa-users icon"></i>Pengalaman Organisasi</h3>
-            <ul>
-                <li><i class="fas fa-user-friends icon"></i>UKS SMPN 10 Takengon</li>
-                <li><i class="fas fa-fist-raised icon"></i>Taekwondo Universitas Budi Luhur</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h3><i class="fas fa-star icon"></i>Kemampuan</h3>
-            <ul>
-                <li><i class="fas fa-paint-brush icon"></i>Drawing</li>
-                <li><i class="fas fa-guitar icon"></i>Guitarist</li>
-                <li><i class="fas fa-music icon"></i>Pianist</li>
-            </ul>
-        </div>
-        <div class="footer">
-            <p>&copy; 2023 Syukranda. All rights reserved.</p>
-        </div>
+        <aside class="sidebar">
+            <img src="Mikasa Ackerman.jpg" alt="Foto Syukranda" class="profile-img">
+            
+            <h1>Syukranda</h1>
+            <p class="role">Mahasiswa Teknik Informatika</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-id-card"></i> 2311500546
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Aceh Tengah, IDN
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> email@anda.com
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-birthday-cake"></i> 30 Sept 2005
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3 style="color:white; margin-bottom:15px; border-bottom:1px solid gray; padding-bottom:5px;">Soft Skills</h3>
+                
+                <div class="skill-box">
+                    <span class="skill-name">Musik (Piano/Gitar)</span>
+                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-box">
+                    <span class="skill-name">Menggambar</span>
+                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-box">
+                    <span class="skill-name">Teamwork</span>
+                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-user-circle"></i>Tentang Saya</h2>
+                <p>Mahasiswa Universitas Budi Luhur yang berdedikasi dengan minat tinggi di bidang teknologi dan seni. Memiliki kemampuan dalam bekerja sama tim (seperti pengalaman organisasi) dan disiplin tinggi melalui latar belakang bela diri.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Pendidikan</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Universitas Budi Luhur</span>
+                        <span class="item-date">2023 - Sekarang</span>
+                    </div>
+                    <span class="item-subtitle">S1 - Teknik Informatika (Asumsi)</span>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">SMAN 1 Takengon</span>
+                        <span class="item-date">Lulus 2023</span>
+                    </div>
+                    <span class="item-subtitle">Jurusan IPA/IPS</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-users"></i>Pengalaman Organisasi</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">UKM Taekwondo</span>
+                        <span class="item-date">Aktif</span>
+                    </div>
+                    <span class="item-subtitle">Universitas Budi Luhur</span>
+                    <p style="font-size: 13px; margin-top: 5px;">Melatih kedisiplinan fisik dan mental serta berpartisipasi dalam kegiatan kejuaraan.</p>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">UKS (Usaha Kesehatan Sekolah)</span>
+                        <span class="item-date">Masa SMP</span>
+                    </div>
+                    <span class="item-subtitle">SMPN 10 Takengon</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i>Proyek Akademik</h2>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Analisis Sentimen Novel</span>
+                    </div>
+                    <p style="font-size: 13px; margin-top: 5px;">
+                        Melakukan analisis sentimen nasionalisme pada novel "Bumi Manusia" menggunakan metode Naïve Bayes.
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Smart Assist Glass (Prototype)</span>
+                    </div>
+                    <p style="font-size: 13px; margin-top: 5px;">
+                        Konsep kacamata pintar berbasis IoT untuk membantu mobilitas penyandang tunanetra.
+                    </p>
+                </div>
+            </div>
+
+        </main>
     </div>
+
 </body>
 </html>
