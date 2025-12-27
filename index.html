@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae - Syukranda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-bg: #1a1a2e;
-            --secondary-bg: #16213e;
+            --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
             --accent-color: #FFD700; /* Emas */
-            --text-light: #e0e0e0;
-            --text-muted: #a0a0a0;
+            --text-main: #ffffff;
+            --text-secondary: #b0b0b0;
+            --sidebar-bg: rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -23,176 +25,291 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-light);
+            background: var(--bg-gradient);
+            background-attachment: fixed; /* Agar background tetap saat scroll */
+            color: var(--text-main);
             display: flex;
             justify-content: center;
-            padding: 40px 20px;
-            line-height: 1.6;
+            min-height: 100vh;
+            padding: 50px 20px;
         }
 
         .container {
             display: grid;
-            grid-template-columns: 1fr 2fr; /* Rasio 1:2 untuk Sidebar:Konten */
+            grid-template-columns: 300px 1fr;
             width: 100%;
-            max-width: 1000px;
-            background-color: var(--secondary-bg);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
+            max-width: 1100px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             overflow: hidden;
         }
 
         /* --- SIDEBAR (KIRI) --- */
         .sidebar {
-            background-color: #0f3460;
-            padding: 30px;
-            text-align: center;
-            border-right: 3px solid var(--accent-color);
+            background: var(--sidebar-bg);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .profile-wrapper {
+            position: relative;
+            margin-bottom: 25px;
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             border: 4px solid var(--accent-color);
             object-fit: cover;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transition: transform 0.4s ease;
         }
 
         .profile-img:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
         }
 
         .sidebar h1 {
-            font-size: 24px;
-            color: var(--accent-color);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-main);
+            text-align: center;
             margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
         .sidebar .role {
             font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            color: var(--accent-color);
+            margin-bottom: 35px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-align: center;
         }
 
         .contact-info {
-            text-align: left;
-            margin-bottom: 30px;
+            width: 100%;
+            margin-bottom: 40px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--text-main);
         }
 
         .contact-item i {
             color: var(--accent-color);
-            width: 25px;
-            margin-right: 10px;
+            width: 30px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Skill Bar Styles */
+        /* Skill Bars */
         .skills-section {
-            text-align: left;
+            width: 100%;
+        }
+
+        .section-header-small {
+            font-size: 16px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--glass-border);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .skill-box {
             margin-bottom: 15px;
         }
 
-        .skill-name {
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .progress-bar {
-            background-color: rgba(255, 255, 255, 0.1);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress {
-            background-color: var(--accent-color);
-            height: 100%;
-            border-radius: 4px;
-        }
-
-        /* --- MAIN CONTENT (KANAN) --- */
-        .main-content {
-            padding: 40px;
-        }
-
-        .section {
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            font-size: 20px;
-            color: var(--accent-color);
-            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title i {
-            margin-right: 12px;
-        }
-
-        .item {
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .item:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-left: 3px solid var(--accent-color);
-            transform: translateX(5px);
-        }
-
-        .item-header {
+        .skill-info {
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
         }
 
-        .item-title {
-            font-weight: 700;
-            font-size: 16px;
+        .skill-name {
+            font-size: 13px;
+            font-weight: 500;
         }
 
-        .item-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-style: italic;
+        .progress-bg {
+            background: rgba(255, 255, 255, 0.1);
+            height: 6px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), #ffec8b);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* --- MAIN CONTENT (KANAN) --- */
+        .main-content {
+            padding: 50px;
+            background: transparent;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        /* Timeline Style for Education & Experience */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         .item-date {
             font-size: 12px;
+            background: rgba(255, 215, 0, 0.1);
             color: var(--accent-color);
-            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        .item-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .item-desc {
+            font-size: 14px;
+            color: #d1d1d1;
+            line-height: 1.6;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            font-size: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
             .container {
                 grid-template-columns: 1fr;
             }
             .sidebar {
                 border-right: none;
-                border-bottom: 3px solid var(--accent-color);
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+            .main-content {
+                padding: 30px;
             }
         }
     </style>
@@ -201,7 +318,9 @@
 
     <div class="container">
         <aside class="sidebar">
-            <img src="Mikasa Ackerman.jpg" alt="Foto Syukranda" class="profile-img">
+            <div class="profile-wrapper">
+                <img src="Mikasa Ackerman.jpg" alt="Foto Syukranda" class="profile-img">
+            </div>
             
             <h1>Syukranda</h1>
             <p class="role">Mahasiswa Teknik Informatika</p>
@@ -222,19 +341,25 @@
             </div>
 
             <div class="skills-section">
-                <h3 style="color:white; margin-bottom:15px; border-bottom:1px solid gray; padding-bottom:5px;">Soft Skills</h3>
+                <h3 class="section-header-small">Minat & Hobi</h3>
                 
                 <div class="skill-box">
-                    <span class="skill-name">Musik (Piano/Gitar)</span>
-                    <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                    <div class="skill-info">
+                        <span class="skill-name">Musik (Piano/Gitar)</span>
+                    </div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
                 </div>
                 <div class="skill-box">
-                    <span class="skill-name">Menggambar</span>
-                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                    <div class="skill-info">
+                        <span class="skill-name">Seni (Menggambar)</span>
+                    </div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div>
                 </div>
                 <div class="skill-box">
-                    <span class="skill-name">Teamwork</span>
-                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                    <div class="skill-info">
+                        <span class="skill-name">Bela Diri</span>
+                    </div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 85%"></div></div>
                 </div>
             </div>
         </aside>
@@ -242,14 +367,16 @@
         <main class="main-content">
             
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-user-circle"></i>Tentang Saya</h2>
-                <p>Mahasiswa Universitas Budi Luhur yang berdedikasi dengan minat tinggi di bidang teknologi dan seni. Memiliki kemampuan dalam bekerja sama tim (seperti pengalaman organisasi) dan disiplin tinggi melalui latar belakang bela diri.</p>
+                <h2 class="section-title"><i class="fas fa-user-astronaut"></i>Tentang Saya</h2>
+                <p style="color: #d1d1d1; line-height: 1.8;">
+                    Mahasiswa Teknik Informatika Universitas Budi Luhur yang berdedikasi dengan ketertarikan mendalam pada pengembangan teknologi cerdas (IoT) dan analisis data. Memiliki latar belakang kedisiplinan tinggi yang terbentuk melalui pengalaman organisasi dan bela diri. Siap berkontribusi dan belajar dalam lingkungan profesional teknologi.
+                </p>
             </div>
 
             <div class="section">
                 <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Pendidikan</h2>
                 
-                <div class="item">
+                <div class="timeline-item">
                     <div class="item-header">
                         <span class="item-title">Universitas Budi Luhur</span>
                         <span class="item-date">2023 - Sekarang</span>
@@ -257,7 +384,7 @@
                     <span class="item-subtitle">S1 - Teknik Informatika</span>
                 </div>
 
-                <div class="item">
+                <div class="timeline-item">
                     <div class="item-header">
                         <span class="item-title">SMAN 1 Takengon</span>
                         <span class="item-date">Lulus 2023</span>
@@ -267,36 +394,57 @@
             </div>
 
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-users"></i>Pengalaman Organisasi</h2>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i>Pengalaman</h2>
                 
-                <div class="item">
+                <div class="timeline-item">
                     <div class="item-header">
-                        <span class="item-title">UKM Taekwondo</span>
-                        <span class="item-date">Aktif</span>
+                        <span class="item-title">Asisten Laboratorium ICT</span>
+                        <span class="item-date">Aktif - Sekarang</span>
                     </div>
                     <span class="item-subtitle">Universitas Budi Luhur</span>
-                    <p style="font-size: 13px; margin-top: 5px;">Melatih kedisiplinan fisik dan mental serta berpartisipasi dalam kegiatan kejuaraan.</p>
+                    <p class="item-desc">
+                        Bertanggung jawab membimbing mahasiswa dalam sesi praktikum komputer, melakukan troubleshooting perangkat keras dan lunak di laboratorium, serta membantu dosen dalam persiapan materi ajar teknis.
+                    </p>
                 </div>
 
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Anggota UKM Taekwondo</span>
+                        <span class="item-date">2023 - 2024</span>
+                    </div>
+                    <span class="item-subtitle">Universitas Budi Luhur</span>
+                    <p class="item-desc">Aktif berpartisipasi dalam pelatihan intensif untuk melatih kedisiplinan fisik dan mental serta berkontribusi dalam kegiatan kejuaraan universitas.</p>
+                </div>
             </div>
 
             <div class="section">
                 <h2 class="section-title"><i class="fas fa-laptop-code"></i>Proyek Akademik</h2>
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Analisis Sentimen Novel</span>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-title">Smart Assist Glass</div>
+                        <p class="item-desc">
+                            Pengembangan prototipe kacamata pintar berbasis IoT yang dirancang untuk membantu mobilitas dan navigasi penyandang tunanetra.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Internet of Things</span>
+                            <span class="tech-badge">Sensors</span>
+                            <span class="tech-badge">Arduino/ESP32</span>
+                        </div>
                     </div>
-                    <p style="font-size: 13px; margin-top: 5px;">
-                        Melakukan analisis sentimen nasionalisme pada novel "Bumi Manusia" menggunakan metode Naïve Bayes.
-                    </p>
-                </div>
-                <div class="item">
-                    <div class="item-header">
-                        <span class="item-title">Smart Assist Glass (Prototype)</span>
+
+                    <div class="project-card">
+                        <div class="project-title">Analisis Sentimen Novel</div>
+                        <p class="item-desc">
+                            Studi analisis sentimen mengenai nasionalisme dalam novel "Bumi Manusia" menggunakan algoritma klasifikasi Naïve Bayes.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Data Mining</span>
+                            <span class="tech-badge">Naïve Bayes</span>
+                        </div>
                     </div>
-                    <p style="font-size: 13px; margin-top: 5px;">
-                        Konsep kacamata pintar berbasis IoT untuk membantu mobilitas penyandang tunanetra.
-                    </p>
+
                 </div>
             </div>
 
@@ -305,4 +453,3 @@
 
 </body>
 </html>
-
