@@ -64,9 +64,32 @@
         .profile-img:hover { transform: scale(1.05) rotate(2deg); }
         .sidebar h1 { font-size: 26px; font-weight: 700; color: var(--text-main); text-align: center; margin-bottom: 5px; }
         .sidebar .role { font-size: 14px; color: var(--accent-color); margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center; }
-        .contact-info { width: 100%; margin-bottom: 40px; }
-        .contact-item { display: flex; align-items: center; margin-bottom: 18px; font-size: 13px; color: var(--text-secondary); transition: color 0.3s; }
-        .contact-item:hover { color: var(--text-main); }
+        .contact-info {
+            width: 100%;
+            margin-bottom: 40px;
+            /* Tambahan: Supaya tidak nempel banget ke kiri, kita kasih padding */
+            padding-left: 10px; 
+            box-sizing: border-box;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center; /* Vertikal tengah antara icon & teks */
+            justify-content: flex-start; /* Pastikan mulai dari kiri */
+            margin-bottom: 18px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            text-align: left; /* Paksa teks rata kiri */
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            /* KUNCI RAPI: Gunakan min-width agar lebar icon selalu sama */
+            min-width: 35px; 
+            text-align: center; /* Icon di tengah kotaknya sendiri */
+            margin-right: 10px;
+        }
         .contact-item i { color: var(--accent-color); width: 30px; font-size: 16px; display: flex; justify-content: center; }
         
         /* SKILLS STYLES */
@@ -253,6 +276,7 @@
 
 </body>
 </html>
+
 
 
 
